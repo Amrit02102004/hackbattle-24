@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Navbar({ loginAction }) {
+export default function Navbar({ loginAction, text }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -32,27 +32,30 @@ export default function Navbar({ loginAction }) {
           <li className="hover:underline">Home</li>
         </Link>
         <li className="hover:underline">
-          <a href="#tracks">Tracks</a>
+          <a href="/#tracks">Tracks</a>
         </li>
         <li className="hover:underline">
-          <a href="#about">About</a>
+          <a href="/#about">About</a>
         </li>
         <li className="hover:underline">
-          <a href="#faq">FAQ</a>
+          <a href="/#faq">FAQ</a>
         </li>
-        {/* <li className="hover:underline">Team</li> */}
         <Link href="/timeline">
           {" "}
           <li className="hover:underline">Timeline</li>
         </Link>
+        {/* <Link href="/sponsors">
+          {" "}
+          <li className="hover:underline">Sponsors</li>
+        </Link> */}
       </ul>
 
       {/* Login Button - Hidden on Mobile */}
       <button
-        className="block md:block bg-customBlue text-[#F5E6DA] font-pixeboy text-3xl px-4 py-1 rounded-sm border-2 border-black shadow-[4px_4px_0px_#333] hover:bg-blue-700 hover:cursor-not-allowed"
+        className="block md:block bg-customBlue text-[#F5E6DA] font-pixeboy text-3xl px-4 py-1 rounded-sm border-2 border-black shadow-[4px_4px_0px_#333] hover:bg-blue-700"
         onClick={loginAction}
       >
-        LOGIN
+        {text}
       </button>
 
       {/* Mobile Menu Button */}
@@ -80,39 +83,31 @@ export default function Navbar({ loginAction }) {
 
           {/* Menu Items */}
           <ul className="flex flex-col gap-8 mt-12">
-            <li
-              className="hover:underline cursor-pointer text-center"
-              onClick={toggleMenu}
-            >
-              Home
+            <li className="hover:underline cursor-pointer text-center">
+              <a href="#home" onClick={toggleMenu}>
+                Home
+              </a>
             </li>
-            <li
-              className="hover:underline cursor-pointer text-center"
-              onClick={toggleMenu}
-            >
-              Tracks
+            <li className="hover:underline cursor-pointer text-center">
+              <a href="#tracks" onClick={toggleMenu}>
+                Tracks
+              </a>
             </li>
-            <li
-              className="hover:underline cursor-pointer text-center"
-              onClick={toggleMenu}
-            >
-              About
+            <li className="hover:underline cursor-pointer text-center">
+              <a href="#about" onClick={toggleMenu}>
+                About
+              </a>
             </li>
-            <li
-              className="hover:underline cursor-pointer text-center"
-              onClick={toggleMenu}
-            >
-              FAQ
+            <li className="hover:underline cursor-pointer text-center">
+              <a href="#faq" onClick={toggleMenu}>
+                FAQ
+              </a>
             </li>
-            {/* <li
-              className="hover:underline cursor-pointer text-center"
-              onClick={toggleMenu}
-            >
-              Team
-            </li> */}
-            {/* <button className=" bg-customBlue text-[#F5E6DA] font-pixeboy text-5xl  py-1 rounded-sm border-2 border-black shadow-[4px_4px_0px_#333] hover:bg-blue-700">
-              LOGIN
-            </button> */}
+            <li className="hover:underline cursor-pointer text-center">
+              <a href="/timeline" onClick={toggleMenu}>
+                Timeline
+              </a>
+            </li>
           </ul>
         </div>
       )}
